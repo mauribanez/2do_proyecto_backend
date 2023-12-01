@@ -21,6 +21,7 @@ CREATE TABLE Ingredients (
     ingrediente_id serial  NOT NULL,
     nombre varchar(255)  NOT NULL,
     cantidad varchar(100)  NOT NULL,
+    Cocktails_cocktail_id serial  NOT NULL,
     CONSTRAINT Ingredients_pk PRIMARY KEY (ingrediente_id)
 );
 
@@ -33,15 +34,6 @@ CREATE TABLE Cocktails (
     tipoCocktail_tipoCocktail_id serial  NOT NULL,
     Type_Category_typeCategory_id serial  NOT NULL,
     CONSTRAINT Cocktails_pk PRIMARY KEY (cocktail_id)
-);
-
-
--- Table: CocktailIngredients
-CREATE TABLE CocktailIngredients (
-    cocktail_ingredient_id serial  NOT NULL,
-    Cocktails_cocktail_id serial  NOT NULL,
-    Ingredients_ingrediente_id serial  NOT NULL,
-    CONSTRAINT CocktailIngredients_pk PRIMARY KEY (cocktail_ingredient_id)
 );
 
 
@@ -95,15 +87,10 @@ ALTER TABLE ChatHistory
 ADD CONSTRAINT ChatHistory_Users FOREIGN KEY (Users_user_id)
 REFERENCES Users (user_id);
 
--- Restricción de clave externa en la tabla CocktailIngredients que referencia la tabla Cocktails
-ALTER TABLE CocktailIngredients
-ADD CONSTRAINT CocktailIngredients_Cocktails FOREIGN KEY (Cocktails_cocktail_id)
+ALTER TABLE Ingredients 
+ADD CONSTRAINT Ingredients_Cocktails FOREIGN KEY (Cocktails_cocktail_id)
 REFERENCES Cocktails (cocktail_id);
 
--- Restricción de clave externa en la tabla CocktailIngredients que referencia la tabla Ingredients
-ALTER TABLE CocktailIngredients
-ADD CONSTRAINT CocktailIngredients_Ingredients FOREIGN KEY (Ingredients_ingrediente_id)
-REFERENCES Ingredients (ingrediente_id);
 
 -- Restricción de clave externa en la tabla Cocktails que referencia la tabla Category
 ALTER TABLE Cocktails

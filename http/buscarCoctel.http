@@ -1,2 +1,2 @@
-GET http://localhost:9999/cocktails/
+GET http://localhost:9999/cocktails/margarita
 Accept: application/json

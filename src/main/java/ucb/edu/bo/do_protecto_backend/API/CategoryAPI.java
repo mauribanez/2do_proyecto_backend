@@ -26,10 +26,11 @@ public class CategoryAPI {
     }
 
     @PostMapping("/create")
-     public ResponseEntity<Map<String, Object>> createCategory(@RequestBody CategoryEntity categoryEntity) {
+     public ResponseEntity<Map<String, Object>> createCategory(@RequestBody Map<String, Object> request) {
+        String nameCategory = (String) request.get("namecategory");
         LOGGER.log(Level.INFO, "Inicio del método creando categoría");
         try {
-            categoryBL.createCategory(categoryEntity);
+            categoryBL.createCategory(nameCategory);
             Map<String, Object> response = new HashMap<>();
             response.put("message", "La categoría ha sido creada con éxito");
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -76,10 +77,11 @@ public class CategoryAPI {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<CategoryEntity> updateCategory(@PathVariable("id") Long id, @RequestBody CategoryEntity updatedCategory) {
+    public ResponseEntity<CategoryEntity> updateCategory(@PathVariable("id") Long id, @RequestBody Map<String, Object> request) {
+        String nameCategory = (String) request.get("nameCategory");
         LOGGER.log(Level.INFO, "Inicio del método actualizando categoría");
         try {
-            CategoryEntity category = categoryBL.updateCategory(id, updatedCategory);
+            CategoryEntity category = categoryBL.updateCategory(id, nameCategory);
             Map<String, Object> response = new HashMap<>();
             response.put("message", "La categoría ha sido actualizada con éxito");
             return new ResponseEntity<>(category, HttpStatus.OK);

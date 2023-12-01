@@ -3,7 +3,7 @@ package ucb.edu.bo.do_protecto_backend.ENTITY;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "UserCocktails")
+@Table(name = "usercocktails")
 public class UserCocktailEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -11,11 +11,11 @@ public class UserCocktailEntity {
     private Long userCocktailId;
 
     @ManyToOne
-    @JoinColumn(name = "Cocktails_cocktail_id", nullable = false)
+    @JoinColumn(name = "cocktails_cocktail_id", nullable = false)
     private CocktailEntity cocktail;
 
     @ManyToOne
-    @JoinColumn(name = "Users_user_id", nullable = false)
+    @JoinColumn(name = "users_user_id", nullable = false)
     private UserEntity user;
 
     public Long getUserCocktailId() {

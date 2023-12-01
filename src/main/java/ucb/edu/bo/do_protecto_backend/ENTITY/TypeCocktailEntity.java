@@ -5,15 +5,15 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "TypeCocktail")
+@Table(name = "typecocktail")
 public class TypeCocktailEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "typeCocktail_id")
+    @Column(name = "typecocktail_id")
     private Long typeCocktailId;
 
-    @Column(name = "nameType", nullable = false)
+    @Column(name = "nametype", nullable = false)
     private String nameType;
 
     public Long getTypeCocktailId() {

@@ -6,12 +6,8 @@ Accept: application/json
 {
     "nameCocktail": "Category 1",
     "preparation": "Category 1",
-    "typeCocktail": {
-        "nameType": "Category 1"
-    },
-    "category": {
-        "nameCategory": "Category 1"
-    },
+    "typeCocktail": 1,
+    "category": 1
 }
 
 ### Get All 
@@ -31,10 +27,6 @@ Accept: application/json
 {
     "nameCocktail": "Category 1",
     "preparation": "Category 1",
-    "typeCocktail": {
-        "nameType": "Category 1"
-    },
-    "category": {
-        "nameCategory": "Category 1"
-    },
+    "typeCocktail": 1,
+    "category": 1,
 }

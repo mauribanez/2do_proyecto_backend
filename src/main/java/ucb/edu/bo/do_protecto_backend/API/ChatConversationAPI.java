@@ -6,7 +6,10 @@ import org.springframework.web.bind.annotation.*;
 import ucb.edu.bo.do_protecto_backend.BL.ChatConversationBL;
 import ucb.edu.bo.do_protecto_backend.ENTITY.ChatConversationEntity;
 
+import java.sql.Time;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,7 +33,12 @@ public class ChatConversationAPI {
         
         String mensaje = (String) request.get("mensaje");
         String respuestaGpt = (String) request.get("respuestaGpt");
-        Timestamp fecha = (Timestamp) request.get("fecha");
+        //corrigiendo el timestamp para que se guarde en la base de datos, formato: yyyy-mm-dd hh:mm:ss:
+        String dateEventoString = (String) request.get("fecha");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
+        LocalDateTime localDateTime = LocalDateTime.parse(dateEventoString, formatter);
+        Timestamp fecha = Timestamp.valueOf(localDateTime);
+
         Long userId = (Long) request.get("userId");
         LOGGER.log(Level.INFO, "Inicio del método creando conversación de chat");
         try {
@@ -88,7 +96,11 @@ public class ChatConversationAPI {
     public ResponseEntity<Map<String, Object>> updateChatConversation(@PathVariable("id") Long id, @RequestBody Map<String, Object> request) {
         String mensaje = (String) request.get("mensaje");
         String respuestaGpt = (String) request.get("respuestaGpt");
-        Timestamp fecha = (Timestamp) request.get("fecha");
+        //corrigiendo el timestamp para que se guarde en la base de datos, formato: yyyy-mm-dd hh:mm:ss:
+        String dateEventoString = (String) request.get("fecha");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
+        LocalDateTime localDateTime = LocalDateTime.parse(dateEventoString, formatter);
+        Timestamp fecha = Timestamp.valueOf(localDateTime);
         Long userId = (Long) request.get("userId");
 
         LOGGER.log(Level.INFO, "Inicio del método actualizando conversación de chat");

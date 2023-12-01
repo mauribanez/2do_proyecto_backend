@@ -4,7 +4,7 @@ Content-Type: application/json
 Accept: application/json
 
 {
-    "nameType": "nameType 1",
+    "nametype": "nameType 1"
 }
 
 ### Get All 

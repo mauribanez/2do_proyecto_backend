@@ -15,15 +15,15 @@ public class CategoryBL {
         this.categoryDAO = categoryDAO;
     }
 
-    public CategoryEntity createCategory(CategoryEntity categoryEntity) {
-        if(categoryEntity.getNameCategory() == null || categoryEntity.getNameCategory().isEmpty())
+    public CategoryEntity createCategory(String nameCategory) {
+
+        if(nameCategory == null || nameCategory.isEmpty())
             throw new RuntimeException("El nombre de la categoría no puede estar vacío");
         
-            CategoryEntity category = new CategoryEntity();
-            category.setNameCategory(categoryEntity.getNameCategory());
-
-            CategoryEntity cargo = categoryDAO.save(category);
-            return cargo;
+        CategoryEntity category = new CategoryEntity();
+        category.setNameCategory(nameCategory);
+        return categoryDAO.save(category);
+        
     }
 
 
@@ -36,14 +36,14 @@ public class CategoryBL {
         return categoryDAO.findAll();
     }
 
-    public CategoryEntity updateCategory(Long categoryId, CategoryEntity updatedCategory) {
-        if(updatedCategory.getNameCategory() == null || updatedCategory.getNameCategory().isEmpty())
-            throw new RuntimeException("El nombre de la categoría no puede estar vacío");
-        
-        CategoryEntity existingCategory = categoryDAO.findById(categoryId).orElseThrow(() -> new RuntimeException("No se encontró ningúna categoria con el ID proporcionado"));
-        existingCategory.setNameCategory(updatedCategory.getNameCategory());
-        categoryDAO.save(existingCategory);
-        return existingCategory;
+    public CategoryEntity updateCategory(Long categoryId, String nameCategory) {
+        CategoryEntity category = categoryDAO.findById(categoryId).orElseThrow(() -> new RuntimeException("No se encontró ninguna categoría con el ID proporcionado"));
+        if (nameCategory == null || nameCategory.isEmpty()) {
+            throw new RuntimeException("El nombre de la categoria debe estar completo");
+        }
+        category.setNameCategory(nameCategory);
+        return categoryDAO.save(category);
+
     }
 
     public CategoryEntity deleteCategory(Long categoryId) {

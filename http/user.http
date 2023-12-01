@@ -5,8 +5,8 @@ Accept: application/json
 
 {
     "nombre": "Category 1",
-    "correoelectronico": "tunombre@gmail.com",
-    "contrasena": "123456",
+    "correoElectronico": "tunombre@gmail.com",
+    "contrasena": "123456"
 }
 
 ### Get All 
@@ -24,7 +24,7 @@ Content-Type: application/json
 Accept: application/json
 
 {
-    "nombre": "Category 1",
-    "correoelectronico": "tunombre@gmail.com",
-    "contrasena": "123456",
+    "nombre": "Category 2",
+    "correoElectronico": "tunombre@gmail.com",
+    "contrasena": "123456"
 }

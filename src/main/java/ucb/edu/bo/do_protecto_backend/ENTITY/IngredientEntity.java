@@ -1,7 +1,5 @@
 package ucb.edu.bo.do_protecto_backend.ENTITY;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.*;
 
 @Entity
@@ -18,6 +16,10 @@ public class IngredientEntity {
 
     @Column(name = "cantidad", nullable = false)
     private String cantidad;
+
+    @ManyToOne
+    @JoinColumn(name = "cocktails_cocktail_id", nullable = false)
+    private CocktailEntity cocktailId;
 
     public Long getIngredienteId() {
         return ingredienteId;
@@ -43,11 +45,24 @@ public class IngredientEntity {
         this.cantidad = cantidad;
     }
 
+    public CocktailEntity getCocktailId() {
+        return cocktailId;
+    }
+
+    public void setCocktailId(CocktailEntity cocktailId) {
+        this.cocktailId = cocktailId;
+    }
+    
+
+
     @Override
     public String toString() {
         return "IngredientEntity [ingredienteId=" + ingredienteId + ", nombre=" + nombre + ", cantidad=" + cantidad
                 + "]";
     }
+
+
+
 
     
 }

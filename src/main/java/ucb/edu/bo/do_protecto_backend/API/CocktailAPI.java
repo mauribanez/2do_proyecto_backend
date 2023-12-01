@@ -30,8 +30,10 @@ public class CocktailAPI {
     public ResponseEntity<Map<String, Object>> createCocktail(@RequestBody Map<String, Object> request) {
         String nameCocktail = (String) request.get("nameCocktail");
         String preparation = (String) request.get("preparation");
-        TypeCocktailEntity typeCocktail = (TypeCocktailEntity) request.get("typeCocktail");
-        CategoryEntity category = (CategoryEntity) request.get("category");
+        Integer typeCocktailInt = (Integer) request.get("typeCocktail");
+        Long typeCocktail = typeCocktailInt.longValue();
+        Integer categoryInt = (Integer) request.get("category");
+        Long category = categoryInt.longValue();
 
         LOGGER.log(Level.INFO, "Inicio del método creando Cocktail");
 

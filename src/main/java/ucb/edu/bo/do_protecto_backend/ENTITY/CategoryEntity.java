@@ -14,7 +14,7 @@ public class CategoryEntity {
     @Column(name = "Category_id")
     private Long categoryId;
 
-    @Column(name = "nameCategory", nullable = false)
+    @Column(name = "namecategory", nullable = false)
     private String nameCategory;
 
     public Long getCategoryId() {

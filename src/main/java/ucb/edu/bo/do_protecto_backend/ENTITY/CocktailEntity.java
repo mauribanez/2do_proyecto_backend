@@ -27,15 +27,12 @@ public class CocktailEntity {
     private String preparation;
 
     @ManyToOne
-    @JoinColumn(name = "tipoCocktail_tipoCocktail_id", nullable = false)
+    @JoinColumn(name = "tipococktail_tipococktail_id", nullable = false)
     private TypeCocktailEntity typeCocktail;
 
     @ManyToOne
-    @JoinColumn(name = "Type_Category_typeCategory_id", nullable = false)
+    @JoinColumn(name = "type_category_typecategory_id", nullable = false)
     private CategoryEntity category;
-
-    @OneToMany(mappedBy = "cocktail")
-    private List<CocktailIngredientEntity> ingredients;
 
     public Long getCocktailId() {
         return cocktailId;
@@ -77,19 +74,10 @@ public class CocktailEntity {
         this.category = category;
     }
 
-    public List<CocktailIngredientEntity> getIngredients() {
-        return ingredients;
-    }
-
-    public void setIngredients(List<CocktailIngredientEntity> ingredients) {
-        this.ingredients = ingredients;
-    }
-
     @Override
     public String toString() {
         return "CocktailEntity [cocktailId=" + cocktailId + ", nameCocktail=" + nameCocktail + ", preparation="
-                + preparation + ", typeCocktail=" + typeCocktail + ", category=" + category + ", ingredients="
-                + ingredients + "]";
+                + preparation + ", typeCocktail=" + typeCocktail + ", category=" + category  + "]";
     }
 
     

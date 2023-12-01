@@ -6,5 +6,5 @@ import ucb.edu.bo.do_protecto_backend.ENTITY.CategoryEntity;
 
 @Repository
 public interface CategoryDAO extends JpaRepository<CategoryEntity, Long> {
-    // Puedes agregar métodos personalizados si es necesario
+
 }

@@ -4,10 +4,10 @@ Content-Type: application/json
 Accept: application/json
 
 {
-    "mensaje": "Category 1",
-    "respuestaGort": "Category 1",
-    "fecha": "Category 1",
-    "user": 1
+    "mensaje": "Ejemplo de mensaje",
+    "respuestaGpt": "Ejemplo de respuesta",
+    "fecha": "2021-05-05T00:00",
+    "userId": 1
 }
 
 ### Get All 
@@ -25,8 +25,8 @@ Content-Type: application/json
 Accept: application/json
 
 {
-    "mensaje": "Category 1",
-    "respuestaGort": "Category 1",
-    "fecha": "Category 1",
+    "mensaje": "Ejemplo de mensaje",
+    "respuestaGort": "Ejemplo de respuesta",
+    "fecha": "2023-12-01T12:34:56.789Z",
     "user": 1
 }

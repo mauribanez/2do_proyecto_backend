@@ -4,7 +4,7 @@ Content-Type: application/json
 Accept: application/json
 
 {
-    "nameCategory": "Category 1",
+    "namecategory": "Category 1"
 }
 
 ### Get All Category
@@ -22,5 +22,5 @@ Content-Type: application/json
 Accept: application/json
 
 {
-    "nameCategory": "Category 1",
+    "nameCategory": "Category 1"
 }

@@ -3,6 +3,8 @@ package ucb.edu.bo.do_protecto_backend.API;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import jakarta.persistence.criteria.CriteriaBuilder.In;
 import ucb.edu.bo.do_protecto_backend.BL.IngredientBL;
 import ucb.edu.bo.do_protecto_backend.ENTITY.IngredientEntity;
 
@@ -28,10 +30,12 @@ public class IngredientAPI {
     public ResponseEntity<Map<String, Object>> createIngredient(@RequestBody Map<String, String> request) {
         String nombre = request.get("nombre");
         String cantidad = request.get("cantidad");
+        Integer cocktailIdInt = Integer.parseInt(request.get("cocktailId"));
+        Long cocktailId = cocktailIdInt.longValue();
         LOGGER.log(Level.INFO, "Inicio del método creando ingrediente");
 
         try {
-            IngredientEntity createdIngredient = ingredientBL.createIngredient(nombre, cantidad);
+            IngredientEntity createdIngredient = ingredientBL.createIngredient(nombre, cantidad, cocktailId);
             Map<String, Object> response = new HashMap<>();
             response.put("Ingrediente creado exitosamente", createdIngredient);
             return new ResponseEntity<>(response, HttpStatus.CREATED);

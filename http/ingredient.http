@@ -6,6 +6,7 @@ Accept: application/json
 {
     "nombre": "Category 1",
     "cantidad": "10 oz",
+    "cocktailId": 1
 }
 
 ### Get All 

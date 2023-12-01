@@ -26,7 +26,7 @@ public class TypeCocktailAPI {
 
     @PostMapping("/create")
     public ResponseEntity<Map<String, Object>> createTypeCocktail(@RequestBody Map<String, String> request) {
-        String nameType = request.get("nameType");
+        String nameType = request.get("nametype");
         LOGGER.log(Level.INFO, "Inicio del método creando TypeCocktail");
 
         try {
