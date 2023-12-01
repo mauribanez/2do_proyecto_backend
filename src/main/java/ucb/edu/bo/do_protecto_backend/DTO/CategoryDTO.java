@@ -3,6 +3,7 @@ package ucb.edu.bo.do_protecto_backend.DTO;
 public class CategoryDTO {
     private Long categoryId;
     private String nameCategory;
+    
     public Long getCategoryId() {
         return categoryId;
     }

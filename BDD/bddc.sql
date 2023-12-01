@@ -9,33 +9,21 @@ CREATE TABLE Category (
     CONSTRAINT Category_pk PRIMARY KEY (Category_id)
 );
 
--- Table: ChatConversations
-CREATE TABLE ChatConversations (
-    conversacion_id serial  NOT NULL AUTO_INCREMENT,
-    mensaje varchar(5000)  NOT NULL,
-    respuesta_gpt varchar(5000)  NOT NULL,
-    fecha timestamp  NOT NULL DEFAULT current_timestamp,
-    Users_user_id serial  NOT NULL,
-    CONSTRAINT ChatConversations_pk PRIMARY KEY (conversacion_id)
+-- Table: TypeCocktail
+CREATE TABLE TypeCocktail (
+    typeCocktail_id serial  NOT NULL,
+    nameType varchar(50)  NOT NULL,
+    CONSTRAINT TypeCocktail_pk PRIMARY KEY (typeCocktail_id)
 );
 
--- Table: ChatHistory
-CREATE TABLE ChatHistory (
-    chat_history_id serial  NOT NULL AUTO_INCREMENT,
-    consulta varchar(5000)  NOT NULL,
-    respuesta_gpt varchar(5000)  NOT NULL,
-    fecha timestamp  NOT NULL DEFAULT current_timestamp,
-    Users_user_id serial  NOT NULL,
-    CONSTRAINT ChatHistory_pk PRIMARY KEY (chat_history_id)
+-- Table: Ingredients
+CREATE TABLE Ingredients (
+    ingrediente_id serial  NOT NULL,
+    nombre varchar(255)  NOT NULL,
+    cantidad varchar(100)  NOT NULL,
+    CONSTRAINT Ingredients_pk PRIMARY KEY (ingrediente_id)
 );
 
--- Table: CocktailIngredients
-CREATE TABLE CocktailIngredients (
-    cocktail_ingredient_id serial  NOT NULL AUTO_INCREMENT,
-    Cocktails_cocktail_id serial  NOT NULL,
-    Ingredients_ingrediente_id serial  NOT NULL,
-    CONSTRAINT CocktailIngredients_pk PRIMARY KEY (cocktail_ingredient_id)
-);
 
 -- Table: Cocktails
 CREATE TABLE Cocktails (
@@ -47,71 +35,95 @@ CREATE TABLE Cocktails (
     CONSTRAINT Cocktails_pk PRIMARY KEY (cocktail_id)
 );
 
--- Table: Ingredients
-CREATE TABLE Ingredients (
-    ingrediente_id serial  NOT NULL AUTO_INCREMENT,
-    nombre varchar(255)  NOT NULL,
-    cantidad varchar(100)  NOT NULL,
-    CONSTRAINT Ingredients_pk PRIMARY KEY (ingrediente_id)
-);
 
--- Table: TypeCocktail
-CREATE TABLE TypeCocktail (
-    typeCocktail_id serial  NOT NULL,
-    nameType varchar(50)  NOT NULL,
-    CONSTRAINT TypeCocktail_pk PRIMARY KEY (typeCocktail_id)
-);
-
--- Table: UserCocktails
-CREATE TABLE UserCocktails (
-    user_cocktail_id serial  NOT NULL AUTO_INCREMENT,
+-- Table: CocktailIngredients
+CREATE TABLE CocktailIngredients (
+    cocktail_ingredient_id serial  NOT NULL,
     Cocktails_cocktail_id serial  NOT NULL,
-    Users_user_id serial  NOT NULL,
-    CONSTRAINT UserCocktails_pk PRIMARY KEY (user_cocktail_id)
+    Ingredients_ingrediente_id serial  NOT NULL,
+    CONSTRAINT CocktailIngredients_pk PRIMARY KEY (cocktail_ingredient_id)
 );
+
 
 -- Table: Users
 CREATE TABLE Users (
-    user_id serial  NOT NULL AUTO_INCREMENT,
+    user_id serial  NOT NULL,
     nombre varchar(255)  NOT NULL,
     correo_electronico varchar(255)  NOT NULL,
     contrasena varchar(255)  NOT NULL,
     CONSTRAINT Users_pk PRIMARY KEY (user_id)
 );
 
+-- Table: ChatConversations
+CREATE TABLE ChatConversations (
+    conversacion_id serial  NOT NULL,
+    mensaje varchar(5000)  NOT NULL,
+    respuesta_gpt varchar(5000)  NOT NULL,
+    fecha timestamp  NOT NULL DEFAULT current_timestamp,
+    Users_user_id serial  NOT NULL,
+    CONSTRAINT ChatConversations_pk PRIMARY KEY (conversacion_id)
+);
+
+-- Table: ChatHistory
+CREATE TABLE ChatHistory (
+    chat_history_id serial  NOT NULL,
+    consulta varchar(5000)  NOT NULL,
+    respuesta_gpt varchar(5000)  NOT NULL,
+    fecha timestamp  NOT NULL DEFAULT current_timestamp,
+    Users_user_id serial  NOT NULL,
+    CONSTRAINT ChatHistory_pk PRIMARY KEY (chat_history_id)
+);
+
+
+-- Table: UserCocktails
+CREATE TABLE UserCocktails (
+    user_cocktail_id serial  NOT NULL,
+    Cocktails_cocktail_id serial  NOT NULL,
+    Users_user_id serial  NOT NULL,
+    CONSTRAINT UserCocktails_pk PRIMARY KEY (user_cocktail_id)
+);
+
+
 -- foreign keys
--- Reference: ChatConversations_Users (table: ChatConversations)
-ALTER TABLE ChatConversations ADD CONSTRAINT ChatConversations_Users FOREIGN KEY ChatConversations_Users (Users_user_id)
-    REFERENCES Users (user_id);
+-- Restricción de clave externa en la tabla ChatConversations que referencia la tabla Users
+ALTER TABLE ChatConversations
+ADD CONSTRAINT ChatConversations_Users FOREIGN KEY (Users_user_id)
+REFERENCES Users (user_id);
 
--- Reference: ChatHistory_Users (table: ChatHistory)
-ALTER TABLE ChatHistory ADD CONSTRAINT ChatHistory_Users FOREIGN KEY ChatHistory_Users (Users_user_id)
-    REFERENCES Users (user_id);
+-- Restricción de clave externa en la tabla ChatHistory que referencia la tabla Users
+ALTER TABLE ChatHistory
+ADD CONSTRAINT ChatHistory_Users FOREIGN KEY (Users_user_id)
+REFERENCES Users (user_id);
 
--- Reference: CocktailIngredients_Cocktails (table: CocktailIngredients)
-ALTER TABLE CocktailIngredients ADD CONSTRAINT CocktailIngredients_Cocktails FOREIGN KEY CocktailIngredients_Cocktails (Cocktails_cocktail_id)
-    REFERENCES Cocktails (cocktail_id);
+-- Restricción de clave externa en la tabla CocktailIngredients que referencia la tabla Cocktails
+ALTER TABLE CocktailIngredients
+ADD CONSTRAINT CocktailIngredients_Cocktails FOREIGN KEY (Cocktails_cocktail_id)
+REFERENCES Cocktails (cocktail_id);
 
--- Reference: CocktailIngredients_Ingredients (table: CocktailIngredients)
-ALTER TABLE CocktailIngredients ADD CONSTRAINT CocktailIngredients_Ingredients FOREIGN KEY CocktailIngredients_Ingredients (Ingredients_ingrediente_id)
-    REFERENCES Ingredients (ingrediente_id);
+-- Restricción de clave externa en la tabla CocktailIngredients que referencia la tabla Ingredients
+ALTER TABLE CocktailIngredients
+ADD CONSTRAINT CocktailIngredients_Ingredients FOREIGN KEY (Ingredients_ingrediente_id)
+REFERENCES Ingredients (ingrediente_id);
 
--- Reference: Cocktails_Type_Category (table: Cocktails)
-ALTER TABLE Cocktails ADD CONSTRAINT Cocktails_Type_Category FOREIGN KEY Cocktails_Type_Category (Type_Category_typeCategory_id)
-    REFERENCES Category (Category_id);
+-- Restricción de clave externa en la tabla Cocktails que referencia la tabla Category
+ALTER TABLE Cocktails
+ADD CONSTRAINT Cocktails_Type_Category FOREIGN KEY (Type_Category_typeCategory_id)
+REFERENCES Category (Category_id);
 
--- Reference: Cocktails_tipoCocktail (table: Cocktails)
-ALTER TABLE Cocktails ADD CONSTRAINT Cocktails_tipoCocktail FOREIGN KEY Cocktails_tipoCocktail (tipoCocktail_tipoCocktail_id)
-    REFERENCES TypeCocktail (typeCocktail_id);
+-- Restricción de clave externa en la tabla Cocktails que referencia la tabla TypeCocktail
+ALTER TABLE Cocktails
+ADD CONSTRAINT Cocktails_tipoCocktail FOREIGN KEY (tipoCocktail_tipoCocktail_id)
+REFERENCES TypeCocktail (typeCocktail_id);
 
--- Reference: UserCocktails_Cocktails (table: UserCocktails)
-ALTER TABLE UserCocktails ADD CONSTRAINT UserCocktails_Cocktails FOREIGN KEY UserCocktails_Cocktails (Cocktails_cocktail_id)
-    REFERENCES Cocktails (cocktail_id);
+-- Restricción de clave externa en la tabla UserCocktails que referencia la tabla Cocktails
+ALTER TABLE UserCocktails
+ADD CONSTRAINT UserCocktails_Cocktails FOREIGN KEY (Cocktails_cocktail_id)
+REFERENCES Cocktails (cocktail_id);
 
--- Reference: UserCocktails_Users (table: UserCocktails)
-ALTER TABLE UserCocktails ADD CONSTRAINT UserCocktails_Users FOREIGN KEY UserCocktails_Users (Users_user_id)
-    REFERENCES Users (user_id);
-
+-- Restricción de clave externa en la tabla UserCocktails que referencia la tabla Users
+ALTER TABLE UserCocktails
+ADD CONSTRAINT UserCocktails_Users FOREIGN KEY (Users_user_id)
+REFERENCES Users (user_id);
 -- End of file.
 
 
