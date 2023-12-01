@@ -1,0 +1,26 @@
+### Create 
+POST http://localhost:9999/api/v1/typecocktails/create
+Content-Type: application/json
+Accept: application/json
+
+{
+    "nametype": "nameType 1"
+}
+
+### Get All 
+GET http://localhost:9999/api/v1/typecocktails
+
+### Get  By Id
+GET http://localhost:9999/api/v1/typecocktails/1
+
+### Delete 
+DELETE http://localhost:9999/api/v1/typecocktails/1
+
+### Update 
+PUT http://localhost:9999/api/v1/typecocktails/1
+Content-Type: application/json
+Accept: application/json
+
+{
+    "nameType": "nameType 1",
+}

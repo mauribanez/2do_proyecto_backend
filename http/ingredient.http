@@ -1,0 +1,29 @@
+### Create 
+POST http://localhost:9999/api/v1/ingredients/create
+Content-Type: application/json
+Accept: application/json
+
+{
+    "nombre": "Category 1",
+    "cantidad": "10 oz",
+    "cocktailId": 1
+}
+
+### Get All 
+GET http://localhost:9999/api/v1/ingredients
+
+### Get  By Id
+GET http://localhost:9999/api/v1/ingredients/1
+
+### Delete 
+DELETE http://localhost:9999/api/v1/ingredients/1
+
+### Update 
+PUT http://localhost:9999/api/v1/ingredients/1
+Content-Type: application/json
+Accept: application/json
+
+{
+    "nombre": "Category 1",
+    "cantidad": "10 oz",
+}
