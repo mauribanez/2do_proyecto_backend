@@ -1,7 +1,16 @@
 package ucb.edu.bo.do_protecto_backend.ENTITY;
 
-import jakarta.persistence.*;
 import java.util.List;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "Cocktails")
@@ -28,5 +37,60 @@ public class CocktailEntity {
     @OneToMany(mappedBy = "cocktail")
     private List<CocktailIngredientEntity> ingredients;
 
-    // Constructor, getters y setters
+    public Long getCocktailId() {
+        return cocktailId;
+    }
+
+    public void setCocktailId(Long cocktailId) {
+        this.cocktailId = cocktailId;
+    }
+
+    public String getNameCocktail() {
+        return nameCocktail;
+    }
+
+    public void setNameCocktail(String nameCocktail) {
+        this.nameCocktail = nameCocktail;
+    }
+
+    public String getPreparation() {
+        return preparation;
+    }
+
+    public void setPreparation(String preparation) {
+        this.preparation = preparation;
+    }
+
+    public TypeCocktailEntity getTypeCocktail() {
+        return typeCocktail;
+    }
+
+    public void setTypeCocktail(TypeCocktailEntity typeCocktail) {
+        this.typeCocktail = typeCocktail;
+    }
+
+    public CategoryEntity getCategory() {
+        return category;
+    }
+
+    public void setCategory(CategoryEntity category) {
+        this.category = category;
+    }
+
+    public List<CocktailIngredientEntity> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(List<CocktailIngredientEntity> ingredients) {
+        this.ingredients = ingredients;
+    }
+
+    @Override
+    public String toString() {
+        return "CocktailEntity [cocktailId=" + cocktailId + ", nameCocktail=" + nameCocktail + ", preparation="
+                + preparation + ", typeCocktail=" + typeCocktail + ", category=" + category + ", ingredients="
+                + ingredients + "]";
+    }
+
+    
 }

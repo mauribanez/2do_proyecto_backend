@@ -18,5 +18,35 @@ public class UserCocktailEntity {
     @JoinColumn(name = "Users_user_id", nullable = false)
     private UserEntity user;
 
-    // Constructor, getters y setters
+    public Long getUserCocktailId() {
+        return userCocktailId;
+    }
+
+    public void setUserCocktailId(Long userCocktailId) {
+        this.userCocktailId = userCocktailId;
+    }
+
+    public CocktailEntity getCocktail() {
+        return cocktail;
+    }
+
+    public void setCocktail(CocktailEntity cocktail) {
+        this.cocktail = cocktail;
+    }
+
+    public UserEntity getUser() {
+        return user;
+    }
+
+    public void setUser(UserEntity user) {
+        this.user = user;
+    }
+
+    @Override
+    public String toString() {
+        return "UserCocktailEntity [userCocktailId=" + userCocktailId + ", cocktail=" + cocktail + ", user=" + user
+                + "]";
+    }
+
+    
 }

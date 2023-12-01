@@ -24,4 +24,52 @@ public class ChatConversationEntity {
     @ManyToOne
     @JoinColumn(name = "Users_user_id", nullable = false)
     private UserEntity user;
+
+    public Long getConversacionId() {
+        return conversacionId;
+    }
+
+    public void setConversacionId(Long conversacionId) {
+        this.conversacionId = conversacionId;
+    }
+
+    public String getMensaje() {
+        return mensaje;
+    }
+
+    public void setMensaje(String mensaje) {
+        this.mensaje = mensaje;
+    }
+
+    public String getRespuestaGpt() {
+        return respuestaGpt;
+    }
+
+    public void setRespuestaGpt(String respuestaGpt) {
+        this.respuestaGpt = respuestaGpt;
+    }
+
+    public Timestamp getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Timestamp fecha) {
+        this.fecha = fecha;
+    }
+
+    public UserEntity getUser() {
+        return user;
+    }
+
+    public void setUser(UserEntity user) {
+        this.user = user;
+    }
+
+    @Override
+    public String toString() {
+        return "ChatConversationEntity [conversacionId=" + conversacionId + ", mensaje=" + mensaje + ", respuestaGpt="
+                + respuestaGpt + ", fecha=" + fecha + ", user=" + user + "]";
+    }
+
+    
 }

@@ -17,5 +17,27 @@ public class CategoryEntity {
     @Column(name = "nameCategory", nullable = false)
     private String nameCategory;
 
+    public Long getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(Long categoryId) {
+        this.categoryId = categoryId;
+    }
+
+    public String getNameCategory() {
+        return nameCategory;
+    }
+
+    public void setNameCategory(String nameCategory) {
+        this.nameCategory = nameCategory;
+    }
+
+    @Override
+    public String toString() {
+        return "CategoryEntity [categoryId=" + categoryId + ", nameCategory=" + nameCategory + "]";
+    }
+
+    
     
 }

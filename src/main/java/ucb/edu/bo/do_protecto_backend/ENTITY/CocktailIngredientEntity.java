@@ -21,5 +21,36 @@ public class CocktailIngredientEntity {
     @ManyToOne
     @JoinColumn(name = "Ingredients_ingrediente_id", nullable = false)
     private IngredientEntity ingredient;
+
+    public Long getCocktailIngredientId() {
+        return cocktailIngredientId;
+    }
+
+    public void setCocktailIngredientId(Long cocktailIngredientId) {
+        this.cocktailIngredientId = cocktailIngredientId;
+    }
+
+    public Cocktail getCocktail() {
+        return cocktail;
+    }
+
+    public void setCocktail(Cocktail cocktail) {
+        this.cocktail = cocktail;
+    }
+
+    public IngredientEntity getIngredient() {
+        return ingredient;
+    }
+
+    public void setIngredient(IngredientEntity ingredient) {
+        this.ingredient = ingredient;
+    }
+
+    @Override
+    public String toString() {
+        return "CocktailIngredientEntity [cocktailIngredientId=" + cocktailIngredientId + ", cocktail=" + cocktail
+                + ", ingredient=" + ingredient + "]";
+    }
+    
     
 }

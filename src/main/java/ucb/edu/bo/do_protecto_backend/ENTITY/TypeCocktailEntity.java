@@ -16,5 +16,26 @@ public class TypeCocktailEntity {
     @Column(name = "nameType", nullable = false)
     private String nameType;
 
+    public Long getTypeCocktailId() {
+        return typeCocktailId;
+    }
+
+    public void setTypeCocktailId(Long typeCocktailId) {
+        this.typeCocktailId = typeCocktailId;
+    }
+
+    public String getNameType() {
+        return nameType;
+    }
+
+    public void setNameType(String nameType) {
+        this.nameType = nameType;
+    }
+
+    @Override
+    public String toString() {
+        return "TypeCocktailEntity [typeCocktailId=" + typeCocktailId + ", nameType=" + nameType + "]";
+    }
+
     
 }
