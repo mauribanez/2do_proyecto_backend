@@ -1,0 +1,27 @@
+### Create 
+POST http://localhost:9999/api/v1/usercocktails/create
+Content-Type: application/json
+Accept: application/json
+
+{
+    "cocktailId": 1,
+    "userId": 1
+}
+
+### Get All 
+GET http://localhost:9999/api/v1/usercocktails
+
+### Get By Id
+GET http://localhost:9999/api/v1/usercocktails/1
+
+### Delete 
+DELETE http://localhost:9999/api/v1/usercocktails/1
+
+### Update 
+PUT http://localhost:9999/api/v1/usercocktails/1
+Content-Type: application/json
+Accept: application/json
+{
+    "cocktailId": 1,
+    "userId": 1
+}

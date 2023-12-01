@@ -24,6 +24,12 @@ public class CocktailBL {
         if (preparation == null || preparation.isEmpty()) {
             throw new RuntimeException("La preparación del cóctel no puede estar vacía");
         }
+        if (typeCocktail == null) {
+            throw new RuntimeException("El tipo de cóctel no puede estar vacío");
+        }
+        if (category == null) {
+            throw new RuntimeException("La categoría del cóctel no puede estar vacía");
+        }
 
         CocktailEntity cocktailEntity = new CocktailEntity();
         cocktailEntity.setNameCocktail(nameCocktail);
@@ -52,6 +58,12 @@ public class CocktailBL {
         }
         if (preparation == null || preparation.isEmpty()) {
             throw new RuntimeException("La preparación del cóctel no puede estar vacía");
+        }
+        if (typeCocktail == null) {
+            throw new RuntimeException("El tipo de cóctel no puede estar vacío");
+        }
+        if (category == null) {
+            throw new RuntimeException("La categoría del cóctel no puede estar vacía");
         }
 
         cocktailEntity.setNameCocktail(nameCocktail);

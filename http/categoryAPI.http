@@ -1,0 +1,26 @@
+### Create Category
+POST http://localhost:9999/api/v1/category/create
+Content-Type: application/json
+Accept: application/json
+
+{
+    "nameCategory": "Category 1",
+}
+
+### Get All Category
+GET http://localhost:9999/api/v1/category
+
+### Get Category By Id
+GET http://localhost:9999/api/v1/category/1
+
+### Delete Category
+DELETE http://localhost:9999/api/v1/category/1
+
+### Update Category
+PUT http://localhost:9999/api/v1/category/1
+Content-Type: application/json
+Accept: application/json
+
+{
+    "nameCategory": "Category 1",
+}

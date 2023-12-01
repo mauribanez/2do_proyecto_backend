@@ -1,0 +1,28 @@
+### Create 
+POST http://localhost:9999/api/v1/cocktailingredients/create
+Content-Type: application/json
+Accept: application/json
+
+{
+    "cocktail": "Category 1",
+    "ingredient": "coca-cola"
+}
+
+### Get All 
+GET http://localhost:9999/api/v1/cocktailingredients
+
+### Get  By Id
+GET http://localhost:9999/api/v1/cocktailingredients/1
+
+### Delete 
+DELETE http://localhost:9999/api/v1/cocktailingredients/1
+
+### Update 
+PUT http://localhost:9999/api/v1/cocktailingredients/1
+Content-Type: application/json
+Accept: application/json
+
+{
+    "cocktail": "Category 1",
+    "ingredient": "coca-cola"
+}
