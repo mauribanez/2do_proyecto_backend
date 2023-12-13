@@ -3,16 +3,20 @@ package ucb.edu.bo.do_protecto_backend.BL;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import ucb.edu.bo.do_protecto_backend.DAO.CategoryDAO;
+import ucb.edu.bo.do_protecto_backend.DTO.CategoryResponse;
 import ucb.edu.bo.do_protecto_backend.ENTITY.CategoryEntity;
 
 @Service
 public class CategoryBL {
     private final CategoryDAO categoryDAO;
+    private RestTemplate restTemplate;
 
-    public CategoryBL(CategoryDAO categoryDAO) {
+    public CategoryBL(CategoryDAO categoryDAO, RestTemplate restTemplate) {
         this.categoryDAO = categoryDAO;
+        this.restTemplate = restTemplate;
     }
 
     public CategoryEntity createCategory(String nameCategory) {
@@ -50,5 +54,20 @@ public class CategoryBL {
         CategoryEntity category = categoryDAO.findById(categoryId).orElseThrow(() -> new RuntimeException("No se encontró ningúna categoria con el ID proporcionado"));
         categoryDAO.deleteById(categoryId);
         return category;
+    }
+
+    public void fetchAndStoreCategoriesFromAPI() {
+        CategoryResponse response = restTemplate.getForObject("https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list", CategoryResponse.class);
+    
+        if (response != null && response.getDrinks() != null) {
+            for (CategoryResponse.CategoryData data : response.getDrinks()) {
+                String categoryName = data.getStrCategory();
+                // Verificar si la categoría ya existe
+                List<CategoryEntity> existingCategories = categoryDAO.findByNameCategory(categoryName);
+                if (existingCategories.isEmpty()) {
+                    createCategory(categoryName);
+                }
+            }
+        }
     }
 }

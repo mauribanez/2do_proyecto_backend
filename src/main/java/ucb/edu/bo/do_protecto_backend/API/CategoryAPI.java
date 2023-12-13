@@ -76,6 +76,12 @@ public class CategoryAPI {
         }
     }
 
+    @GetMapping("/fetch")
+    public ResponseEntity<String> fetchAndStoreCategories() {
+        categoryBL.fetchAndStoreCategoriesFromAPI();
+        return ResponseEntity.ok("Categorías importadas con éxito");
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<CategoryEntity> updateCategory(@PathVariable("id") Long id, @RequestBody Map<String, Object> request) {
         String nameCategory = (String) request.get("nameCategory");

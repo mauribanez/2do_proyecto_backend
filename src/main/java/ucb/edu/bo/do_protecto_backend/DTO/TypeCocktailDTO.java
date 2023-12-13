@@ -2,7 +2,7 @@ package ucb.edu.bo.do_protecto_backend.DTO;
 
 public class TypeCocktailDTO {
     private Long typeCocktailId;
-    private String nameType;
+    private String strAlcoholic;
 
     public Long getTypeCocktailId() {
         return typeCocktailId;
@@ -12,12 +12,12 @@ public class TypeCocktailDTO {
         this.typeCocktailId = typeCocktailId;
     }
 
-    public String getNameType() {
-        return nameType;
+    public String getstrAlcoholic() {
+        return strAlcoholic;
     }
 
-    public void setNameType(String nameType) {
-        this.nameType= nameType;
+    public void setstrAlcoholic(String strAlcoholic) {
+        this.strAlcoholic= strAlcoholic;
     }
     
 }
