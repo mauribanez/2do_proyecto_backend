@@ -3,6 +3,8 @@ package ucb.edu.bo.do_protecto_backend.API;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
+
 import ucb.edu.bo.do_protecto_backend.BL.TypeCocktailBL;
 import ucb.edu.bo.do_protecto_backend.ENTITY.TypeCocktailEntity;
 
@@ -78,6 +80,12 @@ public class TypeCocktailAPI {
         } finally {
             LOGGER.log(Level.INFO, "Fin del método obteniendo TypeCocktail por ID");
         }
+    }
+
+    @GetMapping("/fetch")
+    public ResponseEntity<String> fetchAndStoreTypeCocktails() {
+        typeCocktailBL.fetchAndStoreTypeCocktails();
+        return ResponseEntity.ok("Tipos de cócteles importados con éxito");
     }
 
     @PutMapping("/{id}")

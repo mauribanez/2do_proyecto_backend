@@ -2,7 +2,7 @@ package ucb.edu.bo.do_protecto_backend.DTO;
 
 public class CategoryDTO {
     private Long categoryId;
-    private String nameCategory;
+    private String strCategory;
     
     public Long getCategoryId() {
         return categoryId;
@@ -10,15 +10,15 @@ public class CategoryDTO {
     public void setCategoryId(Long categoryId) {
         this.categoryId = categoryId;
     }
-    public String getNameCategory() {
-        return nameCategory;
+    public String getstrCategory() {
+        return strCategory;
     }
-    public void setNameCategory(String nameCategory) {
-        this.nameCategory = nameCategory;
+    public void setstrCategory(String strCategory) {
+        this.strCategory = strCategory;
     }
     @Override
     public String toString() {
-        return "CategoryDTO [categoryId=" + categoryId + ", nameCategory=" + nameCategory + "]";
+        return "CategoryDTO [categoryId=" + categoryId + ", nameCategory=" + strCategory + "]";
     }
 
     
