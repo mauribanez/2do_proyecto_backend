@@ -75,6 +75,50 @@ CREATE TABLE UserCocktails (
     CONSTRAINT UserCocktails_pk PRIMARY KEY (user_cocktail_id)
 );
 
+--Table Cocktails Api
+CREATE TABLE CocktailApi (
+    cocktailapi_id SERIAL NOT NULL,
+    idDrink VARCHAR(50) NOT NULL,
+    nameDrink VARCHAR(255) NOT NULL,
+    category VARCHAR(255) NOT NULL,
+    typeDrink VARCHAR(255) NOT NULL,
+    glass VARCHAR(255),
+    instructions VARCHAR(5000) NOT NULL,
+    imagenURL VARCHAR(1000),
+    ingredient_name1 VARCHAR(255) NOT NULL,
+    ingredient_quantity1 VARCHAR(100) NOT NULL,
+    ingredient_name2 VARCHAR(255) NOT NULL,
+    ingredient_quantity2 VARCHAR(100) NOT NULL,
+    ingredient_name3 VARCHAR(255),
+    ingredient_quantity3 VARCHAR(100),
+    ingredient_name4 VARCHAR(255),
+    ingredient_quantity4 VARCHAR(100),
+    ingredient_name5 VARCHAR(255),
+    ingredient_quantity5 VARCHAR(100),
+    ingredient_name6 VARCHAR(255),
+    ingredient_quantity6 VARCHAR(100),
+    ingredient_name7 VARCHAR(255),
+    ingredient_quantity7 VARCHAR(100),
+    ingredient_name8 VARCHAR(255),
+    ingredient_quantity8 VARCHAR(100),
+    ingredient_name9 VARCHAR(255),
+    ingredient_quantity9 VARCHAR(100),
+    ingredient_name10 VARCHAR(255),
+    ingredient_quantity10 VARCHAR(100),
+    ingredient_name11 VARCHAR(255),
+    ingredient_quantity11 VARCHAR(100),
+    ingredient_name12 VARCHAR(255),
+    ingredient_quantity12 VARCHAR(100),
+    ingredient_name13 VARCHAR(255),
+    ingredient_quantity13 VARCHAR(100),
+    ingredient_name14 VARCHAR(255),
+    ingredient_quantity14 VARCHAR(100),
+    ingredient_name15 VARCHAR(255),
+    ingredient_quantity15 VARCHAR(100),
+    CONSTRAINT CocktailApi_pk PRIMARY KEY (cocktailapi_id)
+);
+
+
 
 -- foreign keys
 -- Restricción de clave externa en la tabla ChatConversations que referencia la tabla Users
